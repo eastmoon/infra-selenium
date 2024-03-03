@@ -12,9 +12,9 @@ python -m venv %VENV%
 %VENV%\Scripts\pip install -r requirements.txt
 %VENV%\Scripts\pip list
 
-@rem endlocal before start python virtaul environmnet
+@rem Execute demo script with python virtual environment
+%VENV%\Scripts\python %cd%\src\demo.py
+
+@rem
 endlocal
 endlocal enabledelayedexpansion
-
-@rem Startup python virtual environment
-call %VENV%\Scripts\activate.bat
