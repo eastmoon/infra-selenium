@@ -30,6 +30,13 @@ Selenium 的運作核心如上圖所示，利用 WebDriver 的驅動服務來操
 
 ### 開發環境
 
++ 下載並安裝 Python
+    - 使用 [Python for Windows](https://www.python.org/downloads/windows/)
+    - 使用 [Microsoft Store : Python](https://apps.microsoft.com/search/publisher?name=Python+Software+Foundation&hl=en-us&gl=US)
++ 建立 [Python 虛擬環境](https://docs.python.org/zh-tw/3/tutorial/venv.html)
++ 安裝 [Selenium 函式庫](https://www.selenium.dev/documentation/webdriver/getting_started/install_library/)
++ 執行範例程式
+
 ### 整合環境
 
 ## 文獻
