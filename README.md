@@ -36,8 +36,8 @@ Selenium 的運作核心如上圖所示，利用 WebDriver 的驅動服務來操
 + 建立 [Python 虛擬環境](https://docs.python.org/zh-tw/3/tutorial/venv.html)
 + 安裝 [Selenium 函式庫](https://www.selenium.dev/documentation/webdriver/getting_started/install_library/)
 + 執行範例程式
-    - 執行 ```dev.bat``` 進入 Python 虛擬環境並執行 ```python .\src\demo.py```
-    - 執行 ```demo.bat``` 直接執行範例腳本 ```demo.py``` 檔案
+    - 執行 ```do local dev``` 進入 Python 虛擬環境並執行 ```python .\src\local-demo.py```
+    - 執行 ```do local demo``` 直接執行範例腳本 ```local-demo.py``` 檔案
 
 ### 整合環境
 

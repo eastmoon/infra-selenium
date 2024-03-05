@@ -1,6 +1,7 @@
 # Project folder
 cache/
 **/__pycache__/
+.env
 
 # third-party library
 
