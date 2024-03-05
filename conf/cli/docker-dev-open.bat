@@ -2,7 +2,6 @@
 @echo off
 
 @rem ------------------- declare variable -------------------
-if not defined CONF_FILE_PATH ( set CONF_FILE_PATH=%CLI_DIRECTORY%\conf\docker\.env )
 
 @rem ------------------- execute script -------------------
 call :%*

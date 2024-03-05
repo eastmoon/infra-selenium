@@ -2,7 +2,6 @@
 @echo off
 
 @rem ------------------- declare variable -------------------
-if not defined CONF_FILE_PATH ( set CONF_FILE_PATH=%CLI_DIRECTORY%\conf\docker\.env )
 
 @rem ------------------- execute script -------------------
 call :%*
@@ -11,25 +10,32 @@ goto end
 @rem ------------------- declare function -------------------
 
 :action
-    @rem setting container infomation
-    call %CLI_SHELL_DIRECTORY%\utils\libs.bat :common-up-docker-prepare
+    @rem Start docker environment
+    call %CLI_SHELL_DIRECTORY%\docker-dev-up.bat action
+    TIMEOUT /T 10
 
-    @rem execute container
-    echo ^> Startup docker container instance
-    docker-compose -f %CLI_DIRECTORY%\conf\docker\docker-compose-standalone.yml --env-file %CONF_FILE_PATH% build
-    docker-compose -f %CLI_DIRECTORY%\conf\docker\docker-compose-standalone.yml --env-file %CONF_FILE_PATH% up -d
+    @rem Open browser
+    call %CLI_SHELL_DIRECTORY%\docker-dev-open.bat action
+    TIMEOUT /T 10
+
+    @rem Execute demo code
+    docker exec -ti selemium-sdk_%PROJECT_NAME% python docker-demo.py
+
+    @rem Close down environment
+    call %CLI_SHELL_DIRECTORY%\docker-dev-down.bat action
+
     goto end
 
 :args
     goto end
 
 :short
-    echo Startup docker-compose
+    echo Run demo code
     goto end
 
 :help
     echo This is a Command Line Interface with project %PROJECT_NAME%
-    echo Startup docker-compose
+    echo Run demo code "src/docker-demo.py"
     echo.
     echo Options:
     echo      --help, -h        Show more information with command.
