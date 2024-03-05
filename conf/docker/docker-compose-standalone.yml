@@ -1,0 +1,38 @@
+# To execute this docker-compose yml file use `docker-compose -f docker-compose-v3.yml up`
+# Add the `-d` flag at the end for detached execution
+# To stop the execution, hit Ctrl+C, and then `docker-compose -f docker-compose-v3.yml down`
+version: "3"
+services:
+  chrome:
+    image: selenium/standalone-chrome
+    container_name: chrome-se_${PROJECT_NAME}
+    shm_size: 2gb
+    environment:
+      - SE_SCREEN_WIDTH=1920
+      - SE_SCREEN_HEIGHT=1080
+      - SE_SCREEN_DEPTH=24
+      - SE_SCREEN_DPI=74
+    ports:
+      - 4444:4444
+      - 7900:7900
+    networks:
+      - selenium_network
+
+  video:
+    image: selenium/video
+    container_name: chrome-video_${PROJECT_NAME}
+    depends_on:
+      - chrome
+    environment:
+      - DISPLAY_CONTAINER_NAME=chrome
+      - FILE_NAME=chrome_video.mp4
+      - SE_SCREEN_WIDTH=1920
+      - SE_SCREEN_HEIGHT=1080
+    volumes:
+      - ${VIDEO_CACHE_PATH}:/videos
+    networks:
+      - selenium_network
+
+networks:
+  selenium_network:
+    driver: bridge
