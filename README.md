@@ -53,6 +53,10 @@ Selenium 的運作核心如上圖所示，利用 WebDriver 的驅動服務來操
     - ```localhost:7900```，為 Standalone 提供的 VNC 服務，以此顯示瀏覽器實際執行的狀況
 + ```do docker demo```：啟動開發環境並直接執行測試範例 ```docker-demo.py```
 
+Selenium Grid 提供四個主要瀏覽器 ( Chrome、Edge、Firefox、Opera ) 的獨體 ( Standalone ) 與節點 ( Node ) 映像檔，此外還有提供叢集結點的匯流 ( Hub ) 映像檔，可以藉此構成跨瀏覽器的平行處理結構。
+
+對於 CI/CD 在自動化測試過程，若有需要可以使用 Video 容器側錄指定容器的瀏覽器操作狀況，以供後續檢測使用；但需注意 Video 容器若未下達 ```docker stop``` 指令並不會停止錄影並封閉串流影片檔，若此範例執行結果，可在專案的 ```cache/video``` 目錄中看到 chrome_video.mp4 的側錄內容。
+
 ## 文獻
 
 + [Selenium](https://www.selenium.dev/)
