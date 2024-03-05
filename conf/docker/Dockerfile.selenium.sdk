@@ -1,0 +1,19 @@
+FROM python:slim
+
+# Install linux packages
+COPY packages.txt /tmp/packages.txt
+RUN \
+  apt-get update -y && \
+  xargs apt-get install -y < /tmp/packages.txt
+
+# Update python package manager
+RUN pip install --upgrade pip
+
+# Install python requirement
+COPY requirements.txt /tmp/requirements.txt
+RUN pip install -r /tmp/requirements.txt
+
+# Setting
+WORKDIR /app
+ENTRYPOINT ["tail"]
+CMD ["-f","/dev/null"]

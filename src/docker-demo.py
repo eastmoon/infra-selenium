@@ -12,7 +12,7 @@ options.add_argument("--start-maximized")
 options.set_capability("se:name", "My simple test")
 options.set_capability("se:sampleMetadata", "Sample metadata value")
 driver = webdriver.Remote(
-    command_executor='http://localhost:4444',
+    command_executor='http://chrome:4444',
     options=options
 )
 

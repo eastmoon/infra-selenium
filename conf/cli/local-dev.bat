@@ -17,7 +17,7 @@ goto end
     python -m venv %VENV%
 
     @rem Install packaga
-    %VENV%\Scripts\pip install -r requirements.txt
+    %VENV%\Scripts\pip install -r %CLI_DIRECTORY%\conf\docker\requirements.txt
     %VENV%\Scripts\pip list
 
     @rem Startup python virtual environment

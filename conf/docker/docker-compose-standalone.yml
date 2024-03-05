@@ -3,9 +3,20 @@
 # To stop the execution, hit Ctrl+C, and then `docker-compose -f docker-compose-v3.yml down`
 version: "3"
 services:
+  selemium.sdk:
+    image: python.selenium.sdk:${PROJECT_NAME}
+    build:
+        context: .
+        dockerfile: Dockerfile.selenium.sdk
+    container_name: selemium-sdk_${PROJECT_NAME}
+    volumes:
+        - ${SORUCE_PATH}:/app
+    networks:
+        - selenium_network
+
   chrome:
     image: selenium/standalone-chrome
-    container_name: chrome-se_${PROJECT_NAME}
+    container_name: chrome-browser_${PROJECT_NAME}
     shm_size: 2gb
     environment:
       - SE_SCREEN_WIDTH=1920
