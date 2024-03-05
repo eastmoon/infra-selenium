@@ -28,7 +28,7 @@ Selenium 的運作核心如上圖所示，利用 WebDriver 的驅動服務來操
 + 開發人員環境，利用開發人員本機的瀏覽器來監看測試腳本的執行結果
 + 自動化環境，在 CI/CD 環節中使用全容器服務且無 UI 狀況的自動化測試，但仍需保留異常或測試結果資訊
 
-### 開發環境
+### 本地開發環境
 
 + 下載並安裝 Python
     - 使用 [Python for Windows](https://www.python.org/downloads/windows/)
@@ -39,7 +39,19 @@ Selenium 的運作核心如上圖所示，利用 WebDriver 的驅動服務來操
     - 執行 ```do local dev``` 進入 Python 虛擬環境並執行 ```python .\src\local-demo.py```
     - 執行 ```do local demo``` 直接執行範例腳本 ```local-demo.py``` 檔案
 
-### 整合環境
+### 容器開發環境
+
+容器開發環境是利用 Selemiun Grid 機制，將整個開發與測試皆放置於容器中，以此確保從開發、整合、測試階段的環境一致性，進而達到平行測試、跨瀏覽器測試；以下為整合環境的執行命令：
+
++ ```do docker dev up```：使用 docker-compose 啟動開發容器
++ ```do docker dev down```：使用 docker-compose 關閉開發容器
++ ```do docker dev into -t=[container_name]```：使用 docker 指令進入容器中
+    - 進入 Selenium SDK 環境使用 ```do docker dev into -t=selenium-sdk```
+    - 進入 Chrome 瀏覽器環境使用 ```do docekr dev into -t=chrome-browser```
++ ```do docker dev open```：開啟 Chrome 瀏覽器並顯示容器對外開放的兩個網址
+    - ```localhost:4444```，為 Selenium Grid 伺服器
+    - ```localhost:7900```，為 Standalone 提供的 VNC 服務，以此顯示瀏覽器實際執行的狀況
++ ```do docker demo```：啟動開發環境並直接執行測試範例 ```docker-demo.py```
 
 ## 文獻
 
