@@ -3,7 +3,9 @@ from selenium.webdriver.common.by import By
 from time import sleep
 
 # Start the session
-driver = webdriver.Chrome()
+options = webdriver.ChromeOptions()
+options.add_argument("--start-maximized")
+driver = webdriver.Chrome(options)
 
 # Take action on browser
 driver.get("https://www.selenium.dev/selenium/web/web-form.html")
